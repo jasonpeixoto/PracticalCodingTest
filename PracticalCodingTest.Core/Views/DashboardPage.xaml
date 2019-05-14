@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:PracticalCodingTest.ViewModel"
+             xmlns:pages="clr-namespace:PracticalCodingTest.Views"
+             x:Class="PracticalCodingTest.Views.DashboardPage"
+             x:TypeArguments="viewmodels:DashboardViewModel"
+             Title="Users">
+    <ContentPage.ToolbarItems>
+      <ToolbarItem Name="AddUser" Text="AddUser" Priority="0" Activated="Handle_AddUser" />
+    </ContentPage.ToolbarItems>
+    <ListView x:Name="lstUsersView" RowHeight="60" ItemsSource="{Binding users}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" >
+                        <StackLayout Orientation="Vertical" Padding="5">
+                            <Label Text="{Binding Name}" FontSize="24" />
+                            <Label Text="{Binding Email}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</pages:BaseContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:BaseContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:PracticalCodingTest.ViewModel"
+             xmlns:pages="clr-namespace:PracticalCodingTest.Views"
+             xmlns:converters="clr-namespace:PracticalCodingTest.Core.Helpers"
+             x:Class="PracticalCodingTest.Views.AddUserPage" 
+             x:TypeArguments="viewmodels:AddUserViewModel"
+             Title="Add User">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ColorValueConverter x:Key="colorValueConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Orientation="Vertical" HorizontalOptions="Fill">
+        <Entry x:Name="FullName" HorizontalOptions="Fill" Placeholder="Enter Full Name" Text="{Binding FullName}" BackgroundColor="{Binding BGFullName, Converter={StaticResource colorValueConverter}}" />
+        <Entry x:Name="EmailAddress" HorizontalOptions="Fill" Placeholder="Enter Email Address" Text="{x:Binding EmailAddress}" BackgroundColor="{Binding BGEmailAddress, Converter={StaticResource colorValueConverter}}" />
+        <Entry x:Name="Password" HorizontalOptions="Fill" Placeholder="Enter Password" IsPassword="true" Text="{Binding Password}" BackgroundColor="{Binding BGPassword, Converter={StaticResource colorValueConverter}}" />
+        <Entry x:Name="PasswordCopy" HorizontalOptions="Fill" Placeholder="Enter Password" IsPassword="true" Text="{Binding PasswordCopy}" BackgroundColor="{Binding BGPasswordCopy, Converter={StaticResource colorValueConverter}}" />
+        <Button x:Name="AddUser" HorizontalOptions="Center" Text="Add User" Command="{x:Binding AddUserClicked}" IsEnabled="{x:Binding IsEnabled}" />
+        <Label x:Name="Error" HorizontalOptions="Center" Text="{Binding Error}" />
+        <Label x:Name="PasswordHasConsecutiveChars" HorizontalOptions="Center" Text="Password Has Consecutive Chars" IsVisible= "{x:Binding PasswordHasConsecutiveChars}" />
+        <Label x:Name="PasswordHasDecimalDigit" HorizontalOptions="Center" Text="Password Must Have Decimal Digit" IsVisible= "{x:Binding PasswordHasDecimalDigit}" />
+        <Label x:Name="PasswordHasLowerCaseLetter" HorizontalOptions="Center" Text="Password Must Have LowerCase" IsVisible= "{x:Binding PasswordHasLowerCaseLetter}" />
+        <Label x:Name="PasswordHasUpperCaseLetter" HorizontalOptions="Center" Text="Password Must Have UpperCase" IsVisible= "{x:Binding PasswordHasUpperCaseLetter}" />
+        <Label x:Name="PasswordMeetsLengthRequirements" HorizontalOptions="Center" Text="Password Must be Between 5-12" IsVisible= "{x:Binding PasswordMeetsLengthRequirements}" />
+        
+    </StackLayout>
+</pages:BaseContentPage>
