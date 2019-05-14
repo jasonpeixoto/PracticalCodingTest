@@ -8,6 +8,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using PracticalCodingTest.Core.Database.Models;
 using PracticalCodingTest.Helpers;
 using PracticalCodingTest.Models;
 
@@ -229,6 +230,24 @@ namespace PracticalCodingTest.ViewModel
             set { OnPropertyChanged(_PasswordMeetsLengthRequirements = value); }
         }
 
-
+        /// <summary>
+        /// Adds the user.
+        /// </summary>
+        /// <returns><c>true</c>, if user was added, <c>false</c> otherwise.</returns>
+        public bool AddUser()
+        {
+            EvaluateFields();                                   // validate all fields
+            if (IsEnabled)                                      // if enabled then we can continue
+            {
+                UsersModel usersModel = UsersModel.Create(      // create model for list
+                    FullName,
+                    EmailAddress,
+                    Password.Encrypt()
+                );
+                usersModel.Insert();                            // insert into database dont worry about duplicates yet
+                users.Add(usersModel);                          // add it to our list of users 
+            }
+            return IsEnabled;
+        }
     }
 }

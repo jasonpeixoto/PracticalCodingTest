@@ -36,16 +36,8 @@ namespace PracticalCodingTest.Views
         /// <param name="obj">Object.</param>
         void AddUserClickedAction(object obj)
         {
-            ViewModel.EvaluateFields();                         // validate all fields
-            if (ViewModel.IsEnabled)                            // if enabled then we can continue
+            if(ViewModel.AddUser())
             {
-                UsersModel usersModel = UsersModel.Create(      // create model for list
-                    ViewModel.FullName,
-                    ViewModel.EmailAddress,
-                    ViewModel.Password.Encrypt()
-                );
-                usersModel.Insert();                            // insert into database dont worry about duplicates yet
-                ViewModel.users.Add(usersModel);                // add it to our list of users 
                 Navigation.PopAsync();                          // pop back to list of users
             }
         }
