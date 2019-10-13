@@ -1,4 +1,4 @@
-﻿//--------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 // Project: PracticalCodingTest
 // Author: Jason Peixoto
 // Version: v1.0
@@ -102,7 +102,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool ValidatePassword(this string password, int MIN_LENGTH = 5, int MAX_LENGTH = 12)
         {
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             return password.MeetsLengthRequirements(MIN_LENGTH, MAX_LENGTH)
                         && password.HasUpperCaseLetter()
                         && password.HasLowerCaseLetter()
@@ -117,7 +117,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool MeetsLengthRequirements(this string password, int MIN_LENGTH = 5, int MAX_LENGTH = 12)
         {
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             return password.Length >= MIN_LENGTH && password.Length <= MAX_LENGTH;
         }
 
@@ -128,15 +128,12 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasUpperCaseLetter(this string password)
         {
-            if (password == null) return false;
-            bool hasUpperCaseLetter = false;
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             foreach (char c in password)
             {
-                if (char.IsUpper(c)) hasUpperCaseLetter = true;
+                if (char.IsUpper(c)) return true;
             }
-
-            return hasUpperCaseLetter;
+            return false;
         }
 
         /// <summary>
@@ -146,15 +143,12 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasLowerCaseLetter(this string password)
         {
-            if (password == null) return false;
-            bool hasLowerCaseLetter = false;
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             foreach (char c in password)
             {
-                if (char.IsLower(c)) hasLowerCaseLetter = true;
+                if (char.IsLower(c)) return true;
             }
-
-            return hasLowerCaseLetter; 
+            return false;
         }
 
         /// <summary>
@@ -164,26 +158,22 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasDecimalDigit(this string password)
         {
-            if (password == null) return false;
-            bool hasDecimalDigit = false;
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             foreach (char c in password)
             {
-                if (char.IsDigit(c)) hasDecimalDigit = true;
+                if (char.IsDigit(c)) return true;
             }
-
-            return hasDecimalDigit; 
+            return false;
         }
 
         /// <summary>
         /// Hases the consecutive chars.
         /// </summary>
         /// <returns><c>true</c>, if consecutive chars was hased, <c>false</c> otherwise.</returns>
-        /// <param name="source">Source.</param>
-        /// <param name="sequenceLength">Sequence length.</param>
+        /// <param name="password">Password.</param>
         public static bool HasConsecutiveChars(this string password)
         {
-            if (password == null) return false;
+            if (string.IsNullOrEmpty(password)) return false;
             var charEnumerator = StringInfo.GetTextElementEnumerator(password);
             var currentElement = string.Empty;
             int count = 1;
