@@ -4,8 +4,7 @@ Please review the problem below and provide a solution back to us on the specifi
 Note: there is no extra credit for a rushed solution.
 
 # Programming Problem
-Provide a production ready solution that accepts a new user name, validates a single string input as the password, and stores it locally. The solution should be written in C#/Xamarin with native UI (Android or iOS, your choice, not Xamarin
-Forms)
+Provide a production ready solution that accepts a new user name, validates a single string input as the password, and stores it locally. The solution should be written in C#/Xamarin with native UI (Xamarin.Android or Xamarin.iOS, or Xamarin.Forms)
 
 UI requirements:
 
