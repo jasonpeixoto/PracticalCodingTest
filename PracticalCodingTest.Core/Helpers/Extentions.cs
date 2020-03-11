@@ -167,6 +167,26 @@ namespace PracticalCodingTest.Helpers
         }
 
         /// <summary>
+        /// Is String Empty or Null.
+        /// </summary>
+        /// <returns><c>true</c>, if sttring is null or empty.</returns>
+        /// <param name="val">val.</param>
+        public static bool IsNullOrEmpty(this string val)
+        {
+            return string.IsNullOrEmpty(val);
+        }
+        
+        /// <summary>
+        /// Is String Null.
+        /// </summary>
+        /// <returns><c>true</c>, if sttring is null.</returns>
+        /// <param name="val">val.</param>
+        public static bool IsNull(this string val)
+        {
+            return val == null;
+        }
+        
+        /// <summary>
         /// Hases the consecutive chars.
         /// </summary>
         /// <returns><c>true</c>, if consecutive chars was hased, <c>false</c> otherwise.</returns>
