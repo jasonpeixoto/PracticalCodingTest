@@ -1,4 +1,4 @@
-﻿//--------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 // Project: PracticalCodingTest
 // Author: Jason Peixoto
 // Version: v1.0
@@ -54,7 +54,7 @@ namespace PracticalCodingTest.ViewModel
 
         public bool PasswordEmpty
         {
-            get => string.IsNullOrEmpty(Password);
+            get => Password.IsNullOrEmpty();
         }
 
         private string _Password;
@@ -122,7 +122,7 @@ namespace PracticalCodingTest.ViewModel
 
         public bool ShowError
         {
-            get => !string.IsNullOrEmpty(Error);
+            get => !Error.IsNullOrEmpty();
         }
 
         private string _Error;
@@ -146,7 +146,7 @@ namespace PracticalCodingTest.ViewModel
                 Error = "";
 
                 // determien full name
-                if (string.IsNullOrEmpty(FullName))
+                if (FullName.IsNullOrEmpty())
                 {
                     Error = "Full Name Required";
                     BGFullName = ColorInValid;
