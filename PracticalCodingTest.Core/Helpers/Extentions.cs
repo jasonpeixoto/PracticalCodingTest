@@ -89,7 +89,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool IsPasswordStrong(this string password)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             if (!password.ValidatePassword()) return false;
             if (password.HasConsecutiveChars()) return false;
             return true;
@@ -102,7 +102,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool ValidatePassword(this string password, int MIN_LENGTH = 5, int MAX_LENGTH = 12)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             return password.MeetsLengthRequirements(MIN_LENGTH, MAX_LENGTH)
                         && password.HasUpperCaseLetter()
                         && password.HasLowerCaseLetter()
@@ -117,7 +117,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool MeetsLengthRequirements(this string password, int MIN_LENGTH = 5, int MAX_LENGTH = 12)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             return password.Length >= MIN_LENGTH && password.Length <= MAX_LENGTH;
         }
 
@@ -128,7 +128,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasUpperCaseLetter(this string password)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             foreach (char c in password)
             {
                 if (char.IsUpper(c)) return true;
@@ -143,7 +143,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasLowerCaseLetter(this string password)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             foreach (char c in password)
             {
                 if (char.IsLower(c)) return true;
@@ -158,7 +158,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasDecimalDigit(this string password)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             foreach (char c in password)
             {
                 if (char.IsDigit(c)) return true;
@@ -193,7 +193,7 @@ namespace PracticalCodingTest.Helpers
         /// <param name="password">Password.</param>
         public static bool HasConsecutiveChars(this string password)
         {
-            if (string.IsNullOrEmpty(password)) return false;
+            if (password.IsNullOrEmpty()) return false;
             var charEnumerator = StringInfo.GetTextElementEnumerator(password);
             var currentElement = string.Empty;
             int count = 1;
